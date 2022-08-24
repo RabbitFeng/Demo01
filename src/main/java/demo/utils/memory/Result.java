@@ -12,4 +12,8 @@ public interface Result {
     float floatValue();
 
     float floatValue(int quality);
+
+    String stringValue();
+
+    String stringValue(int precision);
 }

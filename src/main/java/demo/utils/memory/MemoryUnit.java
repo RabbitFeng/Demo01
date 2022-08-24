@@ -34,6 +34,11 @@ public enum MemoryUnit {
         public Result toTB(double value) {
             return ResultImpl.valueOf(value / (S_TB / S_BIT));
         }
+
+        @Override
+        public Result convert(double value, MemoryUnit u) {
+            return u.toBit(value);
+        }
     },
 
     BYTE {
@@ -65,6 +70,11 @@ public enum MemoryUnit {
         @Override
         public Result toTB(double value) {
             return ResultImpl.valueOf(value / (S_TB / S_BYTE));
+        }
+
+        @Override
+        public Result convert(double value, MemoryUnit u) {
+            return u.toByte(value);
         }
     },
 
@@ -98,6 +108,11 @@ public enum MemoryUnit {
         public Result toTB(double value) {
             return ResultImpl.valueOf(value / (S_TB / S_KB));
         }
+
+        @Override
+        public Result convert(double value, MemoryUnit u) {
+            return u.toKB(value);
+        }
     },
 
     MB {
@@ -129,6 +144,11 @@ public enum MemoryUnit {
         @Override
         public Result toTB(double value) {
             return ResultImpl.valueOf(value / (S_TB / S_MB));
+        }
+
+        @Override
+        public Result convert(double value, MemoryUnit u) {
+            return u.toMB(value);
         }
     },
 
@@ -162,6 +182,11 @@ public enum MemoryUnit {
         public Result toTB(double value) {
             return ResultImpl.valueOf(value / (S_TB / S_GB));
         }
+
+        @Override
+        public Result convert(double value, MemoryUnit u) {
+            return u.toGB(value);
+        }
     },
 
     TB {
@@ -193,6 +218,11 @@ public enum MemoryUnit {
         @Override
         public Result toTB(double value) {
             return ResultImpl.valueOf(value);
+        }
+
+        @Override
+        public Result convert(double value, MemoryUnit u) {
+            return u.toTB(value);
         }
     };
 
@@ -230,6 +260,10 @@ public enum MemoryUnit {
 
     @NotNull
     public Result toTB(double value) {
+        throw new AbstractMethodError();
+    }
+
+    public Result convert(double value, MemoryUnit u) {
         throw new AbstractMethodError();
     }
 

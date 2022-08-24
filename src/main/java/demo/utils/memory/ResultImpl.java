@@ -86,6 +86,17 @@ public class ResultImpl implements Cloneable, Result {
     }
 
     @Override
+    public String stringValue() {
+        return stringValue(0);
+    }
+
+    @Override
+    public String stringValue(int precision) {
+        double v = doubleValue(precision);
+        return String.format("%." + precision + "f", v);
+    }
+
+    @Override
     public String toString() {
         return "ResultImpl{" +
                 "value=" + value +

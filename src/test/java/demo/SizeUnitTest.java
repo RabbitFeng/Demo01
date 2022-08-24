@@ -82,6 +82,6 @@ public class SizeUnitTest {
 
     @Test
     public void test05() {
-        System.out.println(MemoryUnit.KB.toByte(1).intValue());
+        System.out.println(MemoryUnit.KB.toByte(1).stringValue(3));
     }
 }
