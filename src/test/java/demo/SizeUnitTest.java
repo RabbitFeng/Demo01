@@ -1,13 +1,10 @@
 package demo;
 
-import com.sun.javafx.css.SizeUnits;
-import com.sun.xml.internal.ws.developer.UsesJAXBContext;
 import org.junit.Test;
+import sun.nio.cs.ext.MacCentralEurope;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class SizeUnitTest {
     @Test
@@ -64,7 +61,25 @@ public class SizeUnitTest {
 
     @Test
     public void test03() {
-        System.out.println(SizeUnit.BIT.toByte(16, 0).toInt());
-        System.out.println(SizeUnit.BIT.toKB(16, 16).toDouble());
+        System.out.println(MemoryUnit.KB.toByte(100, 10).doubleValue());
+    }
+
+    @Test
+    public void test04() {
+
+        System.out.println("continue");
+    }
+
+    public void check(Object o) {
+        if (o instanceof Number) {
+            System.out.println("Number");
+        }
+        if (o instanceof Double) {
+            System.out.println("Double");
+        }
+    }
+
+    public void uncheck() throws RuntimeException {
+        throw new RuntimeException();
     }
 }

@@ -5,7 +5,7 @@ import com.sun.istack.internal.NotNull;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public enum SizeUnit {
+public enum MemoryUnit {
 
     BIT {
         @Override
@@ -42,7 +42,7 @@ public enum SizeUnit {
     BYTE {
         @Override
         public Result toBit(double value, int quality) {
-            return ResultImpl.valueOf(value * (S_BYTE / S_BIT), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_BYTE / S_BIT)), quality);
         }
 
         @Override
@@ -74,12 +74,12 @@ public enum SizeUnit {
     KB {
         @Override
         public Result toBit(double value, int quality) {
-            return ResultImpl.valueOf(value * (S_KB / S_BIT), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_KB / S_BIT)), quality);
         }
 
         @Override
         public Result toByte(double value, int quality) {
-            return ResultImpl.valueOf(value * (S_KB / S_BYTE), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_KB / S_BYTE)), quality);
         }
 
         @Override
@@ -106,17 +106,17 @@ public enum SizeUnit {
     MB {
         @Override
         public Result toBit(double value, int quality) {
-            return ResultImpl.valueOf(value * (S_MB / S_BIT), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_MB / S_BIT)), quality);
         }
 
         @Override
         public Result toByte(double value, int quality) {
-            return ResultImpl.valueOf(value * (S_MB / S_BYTE), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_MB / S_BYTE)), quality);
         }
 
         @Override
         public Result toKB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_MB / S_KB), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_MB / S_KB)), quality);
         }
 
         @Override
@@ -138,22 +138,22 @@ public enum SizeUnit {
     GB {
         @Override
         public Result toBit(double value, int quality) {
-            return ResultImpl.valueOf(value * (S_GB / S_BIT), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_BIT)), quality);
         }
 
         @Override
         public Result toByte(double value, int quality) {
-            return ResultImpl.valueOf(value * (S_GB / S_BYTE), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_BYTE)), quality);
         }
 
         @Override
         public Result toKB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_GB / S_KB), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_KB)), quality);
         }
 
         @Override
         public Result toMB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_GB / S_MB), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_MB)), quality);
         }
 
         @Override
@@ -170,27 +170,27 @@ public enum SizeUnit {
     TB {
         @Override
         public Result toBit(double value, int quality) {
-            return ResultImpl.valueOf(value * (S_TB / S_BIT), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_BIT)), quality);
         }
 
         @Override
         public Result toByte(double value, int quality) {
-            return ResultImpl.valueOf(value * (S_TB / S_BYTE), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_BYTE)), quality);
         }
 
         @Override
         public Result toKB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_TB / S_KB), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_KB)), quality);
         }
 
         @Override
         public Result toMB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_TB / S_MB), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_MB)), quality);
         }
 
         @Override
         public Result toGB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_TB / S_GB), quality);
+            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_GB)), quality);
         }
 
         @Override
@@ -243,7 +243,7 @@ public enum SizeUnit {
     static double safeMultiply(double a, double b) {
         double result = 0;
         try {
-            NumberCheck.multiplyOverflow(a, b);
+            NumberCheck.checkForOverflow(a, b);
             result = a * b;
         } catch (NumberOverflowException e) {
             e.printStackTrace();
@@ -253,11 +253,13 @@ public enum SizeUnit {
     }
 
     interface Result {
-        double toDouble();
+        double doubleValue();
 
-        int toInt();
+        int intValue();
 
-        long toLong();
+        long longValue();
+
+        float floatValue();
     }
 
     static class ResultImpl implements Cloneable, Result {
@@ -266,17 +268,20 @@ public enum SizeUnit {
         }
 
         private static ResultImpl newInstance(double value) {
-            ResultImpl clone = null;
-            try {
-                clone = (ResultImpl) INSTANCE.clone();
-            } catch (CloneNotSupportedException | ClassCastException e) {
-                e.printStackTrace();
-            }
-            if (clone == null) {
-                clone = new ResultImpl();
-            }
-            clone.value = value;
-            return clone;
+            ResultImpl result = new ResultImpl();
+            result.value = value;
+            return result;
+//            ResultImpl clone = null;
+//            try {
+//                clone = (ResultImpl) INSTANCE.clone();
+//            } catch (CloneNotSupportedException | ClassCastException e) {
+//                e.printStackTrace();
+//            }
+//            if (clone == null) {
+//                clone = new ResultImpl();
+//            }
+//            clone.value = value;
+//            return clone;
         }
 
         private static final ResultImpl INSTANCE = new ResultImpl();
@@ -289,18 +294,47 @@ public enum SizeUnit {
         double value;
 
         @Override
-        public double toDouble() {
+        public double doubleValue() {
             return value;
         }
 
         @Override
-        public int toInt() {
-            return (int) value;
+        public int intValue() {
+            int intVal = 0;
+            try {
+                NumberCheck.checkForOverflow(value, Integer.class);
+                intVal = (int) value;
+            } catch (NumberOverflowException e) {
+                e.printStackTrace();
+                intVal = Integer.MAX_VALUE;
+            }
+            return intVal;
         }
 
         @Override
-        public long toLong() {
-            return (long) value;
+        public long longValue() {
+            long longVal = 0L;
+            try {
+                NumberCheck.checkForOverflow(value, Integer.class);
+                longVal = (long) value;
+            } catch (NumberOverflowException e) {
+                e.printStackTrace();
+                longVal = Long.MAX_VALUE;
+            }
+            return longVal;
+        }
+
+        @Override
+        public float floatValue() {
+            float floatVal = 0f;
+            try {
+                NumberCheck.checkForOverflow(value, Float.class);
+                floatVal = (float) value;
+            } catch (NumberOverflowException e) {
+                e.printStackTrace();
+                floatVal = Float.MAX_VALUE;
+            }
+            return floatVal;
         }
 
         @Override
@@ -311,12 +345,12 @@ public enum SizeUnit {
         }
     }
 
-    public static class NumberOverflowException extends Exception {
+    public static class NumberOverflowException extends RuntimeException {
         public static String NUMBER_OVERFLOW = "Number overflow; Caused by ";
         public static String DOUBLE_OVERFLOW = "Double overflow; Caused by";
-        public static String DOUBLE_TO_INTEGER = "convert double to int";
-        public static String DOUBLE_TO_FLOAT = "convert double to float";
-        public static String DOUBLE_TO_LONG = "convert double to long";
+        public static String DOUBLE_TO_INTEGER = NUMBER_OVERFLOW + "convert double %f to int";
+        public static String DOUBLE_TO_FLOAT = NUMBER_OVERFLOW + "convert double %f to float";
+        public static String DOUBLE_TO_LONG = NUMBER_OVERFLOW + "convert double %f to long";
 
         public NumberOverflowException() {
             this(NUMBER_OVERFLOW);
@@ -328,10 +362,34 @@ public enum SizeUnit {
     }
 
     public static class NumberCheck {
-        // 相乘溢出
-        public static void multiplyOverflow(double a, double b) throws NumberOverflowException {
-            if ((Double.MAX_VALUE / a) < b) {
-                throw new NumberOverflowException(NumberOverflowException.DOUBLE_OVERFLOW);
+        /**
+         * 检查数字溢出
+         *
+         * @throws NumberOverflowException 数字溢出
+         */
+        public static void checkForOverflow(double a, double b) throws NumberOverflowException {
+            double max = Double.max(a, b);
+            double min = Double.min(a, b);
+            if (max > 1 && (Double.MAX_VALUE / max) < min) {
+                throw new NumberOverflowException(NumberOverflowException.DOUBLE_OVERFLOW + a + " * " + b);
+            }
+        }
+
+        public static void checkForOverflow(double a, Class<? extends Number> cls) throws NumberOverflowException {
+            if (cls.isAssignableFrom(Long.class)) {
+                if (Long.MAX_VALUE < a) {
+                    throw new NumberOverflowException(String.format(NumberOverflowException.DOUBLE_TO_LONG, a));
+                }
+            }
+            if (cls.isAssignableFrom(Integer.class)) {
+                if (Integer.MAX_VALUE < a) {
+                    throw new NumberOverflowException(String.format(NumberOverflowException.DOUBLE_TO_INTEGER, a));
+                }
+            }
+            if (cls.isAssignableFrom(Float.class)) {
+                if (Float.MAX_VALUE < a) {
+                    throw new NumberOverflowException(String.format(NumberOverflowException.DOUBLE_TO_FLOAT, a));
+                }
             }
         }
     }
