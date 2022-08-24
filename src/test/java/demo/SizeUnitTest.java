@@ -82,6 +82,8 @@ public class SizeUnitTest {
 
     @Test
     public void test05() {
-        System.out.println(MemoryUnit.KB.toByte(1).stringValue(3));
+        System.out.println(MemoryUnit.KB.toKB(1.2672).stringValue(2));
+        String s = MemoryUnit.KB.toGB(MemoryUnit.GB.toKB(Double.MAX_VALUE).doubleValue()).stringValue(20);
+        System.out.println(s);
     }
 }

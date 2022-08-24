@@ -7,32 +7,32 @@ public enum MemoryUnit {
     BIT {
         @Override
         public Result toBit(double value) {
-            return ResultImpl.valueOf(value);
+            return ResultFactory.valueOf(value);
         }
 
         @Override
         public Result toByte(double value) {
-            return ResultImpl.valueOf(value / (S_BYTE / S_BIT));
+            return ResultFactory.valueOf(value / (S_BYTE / S_BIT));
         }
 
         @Override
         public Result toKB(double value) {
-            return ResultImpl.valueOf(value / (S_KB / S_BIT));
+            return ResultFactory.valueOf(value / (S_KB / S_BIT));
         }
 
         @Override
         public Result toMB(double value) {
-            return ResultImpl.valueOf(value / (S_MB / S_BIT));
+            return ResultFactory.valueOf(value / (S_MB / S_BIT));
         }
 
         @Override
         public Result toGB(double value) {
-            return ResultImpl.valueOf(value / (S_GB / S_BIT));
+            return ResultFactory.valueOf(value / (S_GB / S_BIT));
         }
 
         @Override
         public Result toTB(double value) {
-            return ResultImpl.valueOf(value / (S_TB / S_BIT));
+            return ResultFactory.valueOf(value / (S_TB / S_BIT));
         }
 
         @Override
@@ -44,32 +44,32 @@ public enum MemoryUnit {
     BYTE {
         @Override
         public Result toBit(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_BYTE / S_BIT)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_BYTE / S_BIT)));
         }
 
         @Override
         public Result toByte(double value) {
-            return ResultImpl.valueOf(value);
+            return ResultFactory.valueOf(value);
         }
 
         @Override
         public Result toKB(double value) {
-            return ResultImpl.valueOf(value / (S_KB / S_BYTE));
+            return ResultFactory.valueOf(value / (S_KB / S_BYTE));
         }
 
         @Override
         public Result toMB(double value) {
-            return ResultImpl.valueOf(value / (S_MB / S_BYTE));
+            return ResultFactory.valueOf(value / (S_MB / S_BYTE));
         }
 
         @Override
         public Result toGB(double value) {
-            return ResultImpl.valueOf(value / (S_GB / S_BYTE));
+            return ResultFactory.valueOf(value / (S_GB / S_BYTE));
         }
 
         @Override
         public Result toTB(double value) {
-            return ResultImpl.valueOf(value / (S_TB / S_BYTE));
+            return ResultFactory.valueOf(value / (S_TB / S_BYTE));
         }
 
         @Override
@@ -81,32 +81,32 @@ public enum MemoryUnit {
     KB {
         @Override
         public Result toBit(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_KB / S_BIT)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_KB / S_BIT)));
         }
 
         @Override
         public Result toByte(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_KB / S_BYTE)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_KB / S_BYTE)));
         }
 
         @Override
         public Result toKB(double value) {
-            return ResultImpl.valueOf(value);
+            return ResultFactory.valueOf(value);
         }
 
         @Override
         public Result toMB(double value) {
-            return ResultImpl.valueOf(value / (S_MB / S_KB));
+            return ResultFactory.valueOf(value / (S_MB / S_KB));
         }
 
         @Override
         public Result toGB(double value) {
-            return ResultImpl.valueOf(value / (S_GB / S_KB));
+            return ResultFactory.valueOf(value / (S_GB / S_KB));
         }
 
         @Override
         public Result toTB(double value) {
-            return ResultImpl.valueOf(value / (S_TB / S_KB));
+            return ResultFactory.valueOf(value / (S_TB / S_KB));
         }
 
         @Override
@@ -118,32 +118,32 @@ public enum MemoryUnit {
     MB {
         @Override
         public Result toBit(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_MB / S_BIT)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_MB / S_BIT)));
         }
 
         @Override
         public Result toByte(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_MB / S_BYTE)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_MB / S_BYTE)));
         }
 
         @Override
         public Result toKB(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_MB / S_KB)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_MB / S_KB)));
         }
 
         @Override
         public Result toMB(double value) {
-            return ResultImpl.valueOf(value);
+            return ResultFactory.valueOf(value);
         }
 
         @Override
         public Result toGB(double value) {
-            return ResultImpl.valueOf(value / (S_GB / S_MB));
+            return ResultFactory.valueOf(value / (S_GB / S_MB));
         }
 
         @Override
         public Result toTB(double value) {
-            return ResultImpl.valueOf(value / (S_TB / S_MB));
+            return ResultFactory.valueOf(value / (S_TB / S_MB));
         }
 
         @Override
@@ -155,32 +155,32 @@ public enum MemoryUnit {
     GB {
         @Override
         public Result toBit(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_BIT)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_GB / S_BIT)));
         }
 
         @Override
         public Result toByte(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_BYTE)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_GB / S_BYTE)));
         }
 
         @Override
         public Result toKB(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_KB)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_GB / S_KB)));
         }
 
         @Override
         public Result toMB(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_MB)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_GB / S_MB)));
         }
 
         @Override
         public Result toGB(double value) {
-            return ResultImpl.valueOf(value);
+            return ResultFactory.valueOf(value);
         }
 
         @Override
         public Result toTB(double value) {
-            return ResultImpl.valueOf(value / (S_TB / S_GB));
+            return ResultFactory.valueOf(value / (S_TB / S_GB));
         }
 
         @Override
@@ -192,32 +192,32 @@ public enum MemoryUnit {
     TB {
         @Override
         public Result toBit(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_BIT)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_TB / S_BIT)));
         }
 
         @Override
         public Result toByte(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_BYTE)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_TB / S_BYTE)));
         }
 
         @Override
         public Result toKB(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_KB)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_TB / S_KB)));
         }
 
         @Override
         public Result toMB(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_MB)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_TB / S_MB)));
         }
 
         @Override
         public Result toGB(double value) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_GB)));
+            return ResultFactory.valueOf(safeMultiply(value, (S_TB / S_GB)));
         }
 
         @Override
         public Result toTB(double value) {
-            return ResultImpl.valueOf(value);
+            return ResultFactory.valueOf(value);
         }
 
         @Override
