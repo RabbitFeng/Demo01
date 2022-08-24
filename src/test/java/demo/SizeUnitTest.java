@@ -1,10 +1,11 @@
 package demo;
 
+import demo.utils.memory.MemoryUnit;
 import org.junit.Test;
-import sun.nio.cs.ext.MacCentralEurope;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.concurrent.TimeUnit;
 
 public class SizeUnitTest {
     @Test
@@ -81,7 +82,6 @@ public class SizeUnitTest {
 
     @Test
     public void test05() {
-        double a = 0.222000;
-        System.out.println(a);
+        System.out.println(MemoryUnit.KB.toByte(1).intValue());
     }
 }
