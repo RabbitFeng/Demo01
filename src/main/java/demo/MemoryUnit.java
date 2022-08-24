@@ -9,193 +9,193 @@ public enum MemoryUnit {
 
     BIT {
         @Override
-        public Result toBit(double value, int quality) {
-            return ResultImpl.valueOf(value, quality);
+        public Result toBit(double value) {
+            return ResultImpl.valueOf(value);
         }
 
         @Override
-        public Result toByte(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_BYTE / S_BIT), quality);
+        public Result toByte(double value) {
+            return ResultImpl.valueOf(value / (S_BYTE / S_BIT));
         }
 
         @Override
-        public Result toKB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_KB / S_BIT), quality);
+        public Result toKB(double value) {
+            return ResultImpl.valueOf(value / (S_KB / S_BIT));
         }
 
         @Override
-        public Result toMB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_MB / S_BIT), quality);
+        public Result toMB(double value) {
+            return ResultImpl.valueOf(value / (S_MB / S_BIT));
         }
 
         @Override
-        public Result toGB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_GB / S_BIT), quality);
+        public Result toGB(double value) {
+            return ResultImpl.valueOf(value / (S_GB / S_BIT));
         }
 
         @Override
-        public Result toTB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_TB / S_BIT), quality);
+        public Result toTB(double value) {
+            return ResultImpl.valueOf(value / (S_TB / S_BIT));
         }
     },
 
     BYTE {
         @Override
-        public Result toBit(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_BYTE / S_BIT)), quality);
+        public Result toBit(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_BYTE / S_BIT)));
         }
 
         @Override
-        public Result toByte(double value, int quality) {
-            return ResultImpl.valueOf(value, quality);
+        public Result toByte(double value) {
+            return ResultImpl.valueOf(value);
         }
 
         @Override
-        public Result toKB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_KB / S_BYTE), quality);
+        public Result toKB(double value) {
+            return ResultImpl.valueOf(value / (S_KB / S_BYTE));
         }
 
         @Override
-        public Result toMB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_MB / S_BYTE), quality);
+        public Result toMB(double value) {
+            return ResultImpl.valueOf(value / (S_MB / S_BYTE));
         }
 
         @Override
-        public Result toGB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_GB / S_BYTE), quality);
+        public Result toGB(double value) {
+            return ResultImpl.valueOf(value / (S_GB / S_BYTE));
         }
 
         @Override
-        public Result toTB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_TB / S_BYTE), quality);
+        public Result toTB(double value) {
+            return ResultImpl.valueOf(value / (S_TB / S_BYTE));
         }
     },
 
     KB {
         @Override
-        public Result toBit(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_KB / S_BIT)), quality);
+        public Result toBit(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_KB / S_BIT)));
         }
 
         @Override
-        public Result toByte(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_KB / S_BYTE)), quality);
+        public Result toByte(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_KB / S_BYTE)));
         }
 
         @Override
-        public Result toKB(double value, int quality) {
-            return ResultImpl.valueOf(value, quality);
+        public Result toKB(double value) {
+            return ResultImpl.valueOf(value);
         }
 
         @Override
-        public Result toMB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_MB / S_KB), quality);
+        public Result toMB(double value) {
+            return ResultImpl.valueOf(value / (S_MB / S_KB));
         }
 
         @Override
-        public Result toGB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_GB / S_KB), quality);
+        public Result toGB(double value) {
+            return ResultImpl.valueOf(value / (S_GB / S_KB));
         }
 
         @Override
-        public Result toTB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_TB / S_KB), quality);
+        public Result toTB(double value) {
+            return ResultImpl.valueOf(value / (S_TB / S_KB));
         }
     },
 
     MB {
         @Override
-        public Result toBit(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_MB / S_BIT)), quality);
+        public Result toBit(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_MB / S_BIT)));
         }
 
         @Override
-        public Result toByte(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_MB / S_BYTE)), quality);
+        public Result toByte(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_MB / S_BYTE)));
         }
 
         @Override
-        public Result toKB(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_MB / S_KB)), quality);
+        public Result toKB(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_MB / S_KB)));
         }
 
         @Override
-        public Result toMB(double value, int quality) {
-            return ResultImpl.valueOf(value, quality);
+        public Result toMB(double value) {
+            return ResultImpl.valueOf(value);
         }
 
         @Override
-        public Result toGB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_GB / S_MB), quality);
+        public Result toGB(double value) {
+            return ResultImpl.valueOf(value / (S_GB / S_MB));
         }
 
         @Override
-        public Result toTB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_TB / S_MB), quality);
+        public Result toTB(double value) {
+            return ResultImpl.valueOf(value / (S_TB / S_MB));
         }
     },
 
     GB {
         @Override
-        public Result toBit(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_BIT)), quality);
+        public Result toBit(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_BIT)));
         }
 
         @Override
-        public Result toByte(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_BYTE)), quality);
+        public Result toByte(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_BYTE)));
         }
 
         @Override
-        public Result toKB(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_KB)), quality);
+        public Result toKB(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_KB)));
         }
 
         @Override
-        public Result toMB(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_MB)), quality);
+        public Result toMB(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_GB / S_MB)));
         }
 
         @Override
-        public Result toGB(double value, int quality) {
-            return ResultImpl.valueOf(value, quality);
+        public Result toGB(double value) {
+            return ResultImpl.valueOf(value);
         }
 
         @Override
-        public Result toTB(double value, int quality) {
-            return ResultImpl.valueOf(value / (S_TB / S_GB), quality);
+        public Result toTB(double value) {
+            return ResultImpl.valueOf(value / (S_TB / S_GB));
         }
     },
 
     TB {
         @Override
-        public Result toBit(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_BIT)), quality);
+        public Result toBit(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_BIT)));
         }
 
         @Override
-        public Result toByte(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_BYTE)), quality);
+        public Result toByte(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_BYTE)));
         }
 
         @Override
-        public Result toKB(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_KB)), quality);
+        public Result toKB(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_KB)));
         }
 
         @Override
-        public Result toMB(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_MB)), quality);
+        public Result toMB(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_MB)));
         }
 
         @Override
-        public Result toGB(double value, int quality) {
-            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_GB)), quality);
+        public Result toGB(double value) {
+            return ResultImpl.valueOf(safeMultiply(value, (S_TB / S_GB)));
         }
 
         @Override
-        public Result toTB(double value, int quality) {
-            return ResultImpl.valueOf(value, quality);
+        public Result toTB(double value) {
+            return ResultImpl.valueOf(value);
         }
     };
 
@@ -207,37 +207,41 @@ public enum MemoryUnit {
     static final double S_TB = S_GB * 1024L;
 
     @NotNull
-    public Result toBit(double value, int quality) {
+    public Result toBit(double value) {
         throw new AbstractMethodError();
     }
 
     @NotNull
-    public Result toByte(double value, int quality) {
+    public Result toByte(double value) {
         throw new AbstractMethodError();
     }
 
     @NotNull
-    public Result toKB(double value, int quality) {
+    public Result toKB(double value) {
         throw new AbstractMethodError();
     }
 
     @NotNull
-    public Result toMB(double value, int quality) {
+    public Result toMB(double value) {
         throw new AbstractMethodError();
     }
 
     @NotNull
-    public Result toGB(double value, int quality) {
+    public Result toGB(double value) {
         throw new AbstractMethodError();
     }
 
     @NotNull
-    public Result toTB(double value, int quality) {
+    public Result toTB(double value) {
         throw new AbstractMethodError();
     }
 
     static double getQualityValue(double value, int quality) {
         return BigDecimal.valueOf(value).setScale(quality, RoundingMode.HALF_UP).doubleValue();
+    }
+
+    static float getQualityValue(float value, int quality) {
+        return BigDecimal.valueOf(value).setScale(quality, RoundingMode.HALF_UP).floatValue();
     }
 
     static double safeMultiply(double a, double b) {
@@ -255,16 +259,20 @@ public enum MemoryUnit {
     interface Result {
         double doubleValue();
 
+        double doubleValue(int quality);
+
         int intValue();
 
         long longValue();
 
         float floatValue();
+
+        float floatValue(int quality);
     }
 
     static class ResultImpl implements Cloneable, Result {
-        public static ResultImpl valueOf(double value, int quality) {
-            return newInstance(getQualityValue(value, quality));
+        public static ResultImpl valueOf(double value) {
+            return newInstance(value);
         }
 
         private static ResultImpl newInstance(double value) {
@@ -296,6 +304,11 @@ public enum MemoryUnit {
         @Override
         public double doubleValue() {
             return value;
+        }
+
+        @Override
+        public double doubleValue(int quality) {
+            return getQualityValue(value, quality);
         }
 
         @Override
@@ -335,6 +348,11 @@ public enum MemoryUnit {
                 floatVal = Float.MAX_VALUE;
             }
             return floatVal;
+        }
+
+        @Override
+        public float floatValue(int quality) {
+            return getQualityValue(floatValue(), quality);
         }
 
         @Override

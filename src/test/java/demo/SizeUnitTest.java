@@ -61,7 +61,7 @@ public class SizeUnitTest {
 
     @Test
     public void test03() {
-        System.out.println(MemoryUnit.KB.toByte(100, 10).doubleValue());
+        System.out.println(MemoryUnit.MB.toByte(1.1212).doubleValue(10));
     }
 
     @Test
@@ -79,7 +79,9 @@ public class SizeUnitTest {
         }
     }
 
-    public void uncheck() throws RuntimeException {
-        throw new RuntimeException();
+    @Test
+    public void test05() {
+        double a = 0.222000;
+        System.out.println(a);
     }
 }
